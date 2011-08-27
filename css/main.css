@@ -1,0 +1,15 @@
+/* This style helps older browsers understand HTML5 and resets common tags to 0 */
+article, aside, footer, header, menu, nav, section, details,body, h1, h2, h3, p, ul, li, {
+                            border:0;
+                            margin:0;
+                            padding:0;
+                            display: block;
+                            /* stops WebKit resizing text */
+                            -webkit-text-size-adjust: none;
+                            
+}
+h1 {text-shadow: 2px 2px 3px #999;}
+.shadow {text-shadow: .2em .2em .3em rgba(153,153,153,.6);}
+body div h2 span, details {
+      display: none;
+}
