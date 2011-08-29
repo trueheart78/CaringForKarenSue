@@ -9,6 +9,32 @@ html, body {
 	font-family: 'Arial';
 	margin: 0;
 }
+/* Portrait */
+@media screen and (max-width: 320px)
+{
+	h1 { font-size: 1.2em; line-height: 1.2em; }
+}
+/* Landscape */
+@media screen and (min-width: 321px)
+{
+	h1 { font-size: 1.4em; line-height: 1.4em; }
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: portrait) {
+	/* iPhone portrait targeted */
+	aside {
+		display: table-row;
+		float: left;
+		width: 90%;
+	}
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape) {
+/* iPhone landscape targeted */
+	aside {
+		float: right;
+		display: table-column;
+		width: 100px;
+	}
+}
 form { margin: 0; }
 a:link { color:red; text-decoration:underline; }
 a:visited { color:red; text-decoration:underline; }
@@ -116,7 +142,7 @@ a.pink:active  { color: #f287b7; text-decoration: underline; }
 	width: 696px;
 	height: 95px;
 	color: #ffffff;
-	padding: 5px 15px;
+	padding: 13px 15px 5px;
 	margin: 10px 10px 2px;
 	text-align:left;
 	border: 0px black solid;
@@ -235,12 +261,19 @@ function submitForm(formType){
 		<table width="100%" cellspacing="0" cellpadding="0" border="0">
 		<tr><td id="body" valign="top">
 			<div class="pinkBanner">
+				Please join us for the 2nd annual Caring for Karen Sue Golf Classic. A four man bes
+				ball/scramble type tournament. There will be competitions for: the longest putt, and
+				the closest to pin, a par three challenge, the longest drive, and hit like the pros
+				with competitive long driver <a class="footerLink" href="http://www.rockymountainlongdrive.com" target="_blank" title="Read more at www.RockyMountainLongDrive.com">Craig "CrazyBear" Crowl II</a>!
+				Enjoy prizes, food, and a raffle/silent auction — just a dang good time! 
+			<!--
+			
 				Please join us for the 2nd annual Caring for Karen Sue Golf Classic. A four man best
 				ball/scramble type tournament. There will be competitions for the longest drive, the
 				longest putt, and the closest to pin, as well as a par three challenge, and more!<br>
 				<br>
 				Enjoy prizes, food, and a raffle/silent auction &mdash; just a dang good time! 	 
-			</div>
+			--></div>
 
 			<div id="formContentDonate">
 				<span class="title">Make a Donation</span><br>
@@ -333,8 +366,8 @@ function submitForm(formType){
 				already spread. When cancer has spread the doctors are not blessed with protocols that give you hope. 	 
 				In August of 2010 we found out it had spread to her liver and lungs and she was given less than a year 	 
 				to live. At that time she made the decision to go to Mexico for an experimental treatment that combined 	 
-				lower doses of chemo/radiation with a cancer vaccine. We have been blessed with great friends and fam-	 
-				ily that have helped us over the year to raise money for that treatment. Last year's golf tournament was a 	 
+				lower doses of chemo/radiation with a cancer vaccine. We have been blessed with great friends and family
+				that have helped us over the year to raise money for that treatment. Last year's golf tournament was a 	 
 				huge success thanks to a lot of people it helped our family give our Mother 10 months under the treatment 	 
 				in Mexico, but unfortunately not being able to have immediate access to doctors while at home and the 	 
 				increasing expenses we were unable to continue that treatment. Our Mother has now chosen to see a 	 
@@ -366,6 +399,17 @@ function submitForm(formType){
 				<span class="pink link" onclick="displayFormContent('Register');">Registering to Play</span><br> 	 
 				<span class="pink link" onclick="displayFormContent('Sponsor');">Sponsoring a Hole</span><br> 	 
 				<span class="pink link" onclick="displayFormContent('Donate');">Making a Donation</span>
+				</div>
+				
+				<div style='margin-top:20px;'>
+				<span class="title">MAILING ADDRESS:</span><br>
+				1st Bank<br>
+				PO Box 507<br>
+				Arvada, CO 80001<br>
+				<br>
+				<i>Make checks payable to:</i><br>
+				Karen Sue Benefit Fund<br>
+				
 				</div>
 				
 			</div>
