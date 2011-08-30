@@ -292,7 +292,7 @@ function submitForm(formType){
 		<table width="100%" cellspacing="0" cellpadding="0" border="0">
 		<tr><td id="body" valign="top">
 			<div class="pinkBanner">
-				Please join us for the 2nd annual Caring for Karen Sue Golf Classic. A four man bes
+				Please join us for the 2nd annual Caring for Karen Sue Golf Classic. A four man best
 				ball/scramble type tournament. There will be competitions for: the longest putt, and
 				the closest to pin, a par three challenge, the longest drive, and hit like the pros
 				with competitive long driver <a class="footerLink" href="http://www.rockymountainlongdrive.com" target="_blank" title="Read more at www.RockyMountainLongDrive.com">Craig "CrazyBear" Crowl II</a>!

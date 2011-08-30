@@ -15,7 +15,7 @@ if($_SERVER["HTTP_HOST"] == "localhost" || stristr($_SERVER["HTTP_HOST"],"test."
 	$emailBCC = "";
 	$smptAvailable = ($_SERVER["HTTP_HOST"] != "localhost");
 } else {
-	$testSite = true;
+	$testSite = false;
 	$emailFrom = array("Name"=>"CaringForKarenSue","Email"=>"auto@caringforkarensue.com");
 	$emailTo = array("Name"=>"Kandi O'Connor","Email"=>"kandi3109@yahoo.com");
 	$emailCC = array("Name"=>"Dave Danielson","Email"=>"daveydan21@yahoo.com");
