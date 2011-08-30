@@ -74,19 +74,19 @@ a.pink:active  { color: #f287b7; text-decoration: underline; }
 	cursor: pointer;
 }
 #header {
-	width:974px;
+	width:994px;
 }
 #body {
 	border: 0px black solid;
 	padding-left:27px;
 }
 #footerImage {
-	width:974px;
+	width:994px;
 	padding: 0;
 	margin: 0;
 }
 #footerContent {
-	width:974px;
+	width:994px;
 	padding-left: 37px;
 	padding-bottom: 20px;
 	margin: 0;
@@ -113,7 +113,7 @@ a.pink:active  { color: #f287b7; text-decoration: underline; }
 #formContentDonate, #formContentSponsor, #formContentRegister {
 	display: none;
 	background-color: #FFFFFF; /*#854f67;*/
-	height: 230px;
+	height: 250px;
 	width: 714px;
 	margin-left:10px;
 	padding: 5px;
@@ -201,51 +201,82 @@ function displayFormContent(contentToShow){
 function syncRegistrationValues(){
 	$('#paypalRegistrationSelection').val($('#registrationSelection').val());
 }
+function displaySubmissionButtons(){
+	changeSubmissionButton("registration");
+	changeSubmissionButton("sponsor");
+}
+function changeSubmissionButton(formType){
+	var formInputClass = formType+"Input";
+	var formID = formType+"Form";
+	switch($('#'+formType+'Submission').val()){
+		case "PayPal/CC":
+			$('#'+formType+'PayPalDiv').slideDown();
+			$('#'+formType+'CheckDiv').slideUp();
+			break;
+		case "Check/MoneyOrder":
+			$('#'+formType+'PayPalDiv').slideUp();
+			$('#'+formType+'CheckDiv').slideDown();
+			break;
+		default:
+			$('#'+formType+'PayPalDiv').slideUp();
+			$('#'+formType+'CheckDiv').slideUp();
+			break;
+	}
+}
 function submitForm(formType){
 	var formInputClass = formType+"Input";
 	var formID = formType+"Form";
-	$.ajax({
-		url: "form_handler.php",
-		global: false,
-		type: "POST",
-		data: $("."+formInputClass).serialize(),
-		async: false,
-		beforeSend: function(){
-			jQuery("#"+formType+"PaypalButtonImage").hide();
-			jQuery("#"+formType+"PaypalSpinnerImage").show();
-		},
-		complete: function(){
-			//alert("done!")
-		},
-		success: function(responseText){
-			if(responseText.indexOf('success') == 0){
-				$('#'+formID).submit();
-			} else if(responseText == 'missing'){
-				alert("Please fill out all fields on the form.");
-				jQuery("#"+formType+"PaypalButtonImage").show();
-				jQuery("#"+formType+"PaypalSpinnerImage").hide();
-			} else if(responseText == 'invalid'){
-				alert("Please enter a valid email address.");
-				jQuery("#"+formType+"PaypalButtonImage").show();
-				jQuery("#"+formType+"PaypalSpinnerImage").hide();
-			} else if(responseText == 'error'){
-				alert("There was an error submitting your request\\n\\nPlease try again shortly.");
-				jQuery("#"+formType+"PaypalButtonImage").show();
-				jQuery("#"+formType+"PaypalSpinnerImage").hide();
-			} else {
-				alert(responseText);
-				jQuery("#"+formType+"PaypalButtonImage").show();
-				jQuery("#"+formType+"PaypalSpinnerImage").hide();
+	var formSubmissionID = formType+"Submission";
+	if($("#"+formSubmissionID).val() == ""){
+		alert("Please select your intended payment type.");
+	} else {
+		$.ajax({
+			url: "form_handler.php",
+			global: false,
+			type: "POST",
+			data: $("."+formInputClass).serialize(),
+			async: false,
+			beforeSend: function(){
+				jQuery("#"+formType+"PaypalButtonImage").hide();
+				jQuery("#"+formType+"PaypalSpinnerImage").show();
+			},
+			complete: function(){
+				//alert("done!")
+			},
+			success: function(responseText){
+				if(responseText.indexOf('success_paypal') == 0){
+					$('#'+formID).submit();
+				} else if(responseText.indexOf('success_check') == 0){
+					$('#'+formType+'PayPalDiv').slideUp();
+					$('#'+formType+'CheckDiv').slideUp();
+					$('#'+formType+'CheckDivResponse').slideDown();
+				} else if(responseText == 'missing'){
+					alert("Please fill out all fields on the form.");
+					jQuery("#"+formType+"PaypalButtonImage").show();
+					jQuery("#"+formType+"PaypalSpinnerImage").hide();
+				} else if(responseText == 'invalid'){
+					alert("Please enter a valid email address.");
+					jQuery("#"+formType+"PaypalButtonImage").show();
+					jQuery("#"+formType+"PaypalSpinnerImage").hide();
+				} else if(responseText == 'error'){
+					alert("There was an error submitting your request\\n\\nPlease try again shortly.");
+					jQuery("#"+formType+"PaypalButtonImage").show();
+					jQuery("#"+formType+"PaypalSpinnerImage").hide();
+				} else {
+					alert(responseText);
+					jQuery("#"+formType+"PaypalButtonImage").show();
+					jQuery("#"+formType+"PaypalSpinnerImage").hide();
+				}
+			},
+			error: function(){
+				alert("There was an error submitting your request - please try again shortly.");
 			}
-		},
-		error: function(){
-			alert("There was an error submitting your request - please try again shortly.");
-		}
-	});
+		});
+	}
 }
 </script>
 <div align="center">
-	<div style="width:974px;background-color:#FFFFFF;color:#000000;">
+	<div style="width:994px;background-color:#FFFFFF;color:#000000;">
 		<div id="header">
 			<img src="images/Banner.png" width="974" height="165" border="0" alt="">
 		</div>
@@ -257,7 +288,7 @@ function submitForm(formType){
 			<div style="clear:both;"></div>
 		</div>
 	</div>
-	<div style="width:974px;background-color:#FFFFFF;color:#000000;">
+	<div style="width:994px;background-color:#FFFFFF;color:#000000;">
 		<table width="100%" cellspacing="0" cellpadding="0" border="0">
 		<tr><td id="body" valign="top">
 			<div class="pinkBanner">
@@ -265,15 +296,8 @@ function submitForm(formType){
 				ball/scramble type tournament. There will be competitions for: the longest putt, and
 				the closest to pin, a par three challenge, the longest drive, and hit like the pros
 				with competitive long driver <a class="footerLink" href="http://www.rockymountainlongdrive.com" target="_blank" title="Read more at www.RockyMountainLongDrive.com">Craig "CrazyBear" Crowl II</a>!
-				Enjoy prizes, food, and a raffle/silent auction — just a dang good time! 
-			<!--
-			
-				Please join us for the 2nd annual Caring for Karen Sue Golf Classic. A four man best
-				ball/scramble type tournament. There will be competitions for the longest drive, the
-				longest putt, and the closest to pin, as well as a par three challenge, and more!<br>
-				<br>
-				Enjoy prizes, food, and a raffle/silent auction &mdash; just a dang good time! 	 
-			--></div>
+				Enjoy prizes, food, and a raffle/silent auction — just a dang good time!
+			</div>
 
 			<div id="formContentDonate">
 				<span class="title">Make a Donation</span><br>
@@ -286,6 +310,11 @@ function submitForm(formType){
 				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 				</form>
+				
+				<div id="donationCheckDivResponse" style="display:none;">
+					<span class="title">Thank You</span><br>
+					An email has been sent to you with details on mailing in your donation.
+				</div>
 			</div>
 			<div id="formContentSponsor" >
 				<span class="title">Sponsor a Hole</span><br>
@@ -303,16 +332,37 @@ function submitForm(formType){
 						<td align="right">Email:&nbsp;</td>
 						<td align="left"><input type="email" class="formInput sponsorInput" name="sponsorEmail" value=""></td>
 					</tr>
+					<tr>
+						<td align="right">Pay Using:&nbsp;</td>
+						<td align="left"><select name="sponsorSubmission" id="sponsorSubmission"  class="formInput sponsorInput" onchange="changeSubmissionButton('sponsor');" onblur="changeSubmissionButton('sponsor');">
+							<option value="">-- Select Payment Method --</option>
+							<option value="PayPal/CC">PayPal or Credit Card</option>
+							<option value="Check/MoneyOrder">Check or Money Order</option>
+							</select></td>
+					</tr>
+					<tr>
+						<td align="right">&nbsp;</td>
+						<td align="left">
+							<div id="sponsorPayPalDiv" style="display:none;margin-top:8px;">
+								<form id="sponsorForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+								<img style="cursor:pointer;" id="sponsorPaypalButtonImage" onclick="submitForm('sponsor');" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" alt="PayPal - The safer, easier way to pay online!">
+								<img src="images/ajax-loader.gif" id="sponsorPaypalSpinnerImage" style="display:none;">
+								<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+								</form>
+							</div>
+							<div id="sponsorCheckDiv" style="display:none;margin-top:8px;">
+								<div class="button" onclick="submitForm('sponsor');">Sponsor a Hole</div>
+							</div>
+						</td>
+					</tr>
 					</table>
+					<div id="sponsorCheckDivResponse" style="display:none;">
+						<span class="title">Thank You</span><br>
+						An email has been sent to you with details on mailing in your sponsorship donation.
+					</div>
 				</div>
-				<br>
-				<form id="sponsorForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
-				<img style="cursor:pointer;" id="sponsorPaypalButtonImage" onclick="submitForm('sponsor');" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" alt="PayPal - The safer, easier way to pay online!">
-				<img src="images/ajax-loader.gif" id="sponsorPaypalSpinnerImage" style="display:none;">
-				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-				</form>
 			</div>
 			<div id="formContentRegister">
 				<span class="title">Register to Play</span><br>
@@ -321,7 +371,7 @@ function submitForm(formType){
 				<br>
 				<input type="hidden" class="registrationInput" name="formType" value="registration">
 				<div align="center">
-					<table style="width:300px;" cellspacing="0">
+					<table style="width:350px;" cellspacing="0">
 					<tr>
 						<td align="right">Name:&nbsp;</td>
 						<td align="left"><input type="input" class="formInput registrationInput" name="registrationName" value=""></td>
@@ -343,39 +393,66 @@ function submitForm(formType){
 							<option value="8 Registrants">8 Registrants - $800.00</option>
 							<option value="9 Registrants">9 Registrants - $900.00</option>
 							<option value="10 Registrants">10 Registrants - $1,000.00</option>
-							</select></td>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Pay Using:&nbsp;</td>
+						<td align="left"><select name="registrationSubmission" id="registrationSubmission"  class="formInput registrationInput" onchange="changeSubmissionButton('registration');" onblur="changeSubmissionButton('registration');">
+							<option value="">-- Select Payment Method --</option>
+							<option value="PayPal/CC">PayPal or Credit Card</option>
+							<option value="Check/MoneyOrder">Check or Money Order</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<div id="registrationPayPalDiv" style="display:none;margin-top:8px;">
+								<form id="registrationForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="on0" value="# Registrants">
+								<input type="hidden" name="os0" id="paypalRegistrationSelection" value="1 Registrant">
+								<input type="hidden" name="currency_code" value="USD">
+								<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+								<img style="cursor:pointer;" id="registrationPaypalButtonImage" onclick="syncRegistrationValues();submitForm('registration');" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" alt="PayPal - The safer, easier way to pay online!">
+								<img src="images/ajax-loader.gif" id="registrationPaypalSpinnerImage" style="display:none;">
+								<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+								</form>
+							</div>
+							<div id="registrationCheckDiv" style="display:none;margin-top:8px;">
+								<div class="button" onclick="syncRegistrationValues();submitForm('registration');">Register to Play</div>
+							</div>
+						</td>
 					</tr>
 					</table>
+					<div id="registrationCheckDivResponse" style="display:none;">
+						<span class="title">Thank You</span><br>
+						An email has been sent to you with details on mailing in your registration.
+					</div>
 				</div>
-				<form id="registrationForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="on0" value="# Registrants">
-				<input type="hidden" name="os0" id="paypalRegistrationSelection" value="1 Registrant">
-				<br>
-				<input type="hidden" name="currency_code" value="USD">
-				<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
-				<img style="cursor:pointer;" id="registrationPaypalButtonImage" onclick="syncRegistrationValues();submitForm('registration');" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" alt="PayPal - The safer, easier way to pay online!">
-				<img src="images/ajax-loader.gif" id="registrationPaypalSpinnerImage" style="display:none;">
-				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-				</form>
 			</div>
 			<div id="content">
 				<span class="title">About Karen Sue</span><br>
 				In July of 2009 our Mother was diagnosed with Stage 3B Inflammatory Breast Cancer (IBC). 	 
 				IBC is not detectable on Mammograms, so usually by the time it is diagnosed, as with our Mother, it has 	 
-				already spread. When cancer has spread the doctors are not blessed with protocols that give you hope. 	 
+				already spread. When cancer has spread the doctors are not blessed with protocols that give you hope.<br>
+				<br> 	 
 				In August of 2010 we found out it had spread to her liver and lungs and she was given less than a year 	 
 				to live. At that time she made the decision to go to Mexico for an experimental treatment that combined 	 
 				lower doses of chemo/radiation with a cancer vaccine. We have been blessed with great friends and family
-				that have helped us over the year to raise money for that treatment. Last year's golf tournament was a 	 
-				huge success thanks to a lot of people it helped our family give our Mother 10 months under the treatment 	 
-				in Mexico, but unfortunately not being able to have immediate access to doctors while at home and the 	 
-				increasing expenses we were unable to continue that treatment. Our Mother has now chosen to see a 	 
-				naturopathic doctor here in the US that gives her high dose vitamin C two times a week. This treatment, 	 
-				like the experimental vaccine, is not covered under insurance. Our mom’s will is incredible and we want 	 
-				to be able to help her continue this type of treatment. Our family would like to express our deepest thanks 	 
-				and gratitude for all of your prayers and support through these trying times. We know it is in God's hands 	 
-				and we appreciate that He gave us this opportunity to help our mom. 
+				that have helped us over the year to raise money for that treatment.<br>
+				<br>
+				Last year's golf tournament was a huge success thanks to a lot of people it helped our family give our
+				Mother 10 months under the treatment in Mexico, but unfortunately not being able to have immediate access
+				to doctors while at home and the increasing expenses we were unable to continue that treatment.<br>
+				<br>
+				Our Mother has now chosen to see a naturopathic doctor here in the US that gives her high dose vitamin C
+				two times a week. This treatment, like the experimental vaccine, is not covered under insurance. Our mom's
+				will is incredible and we want to be able to help her continue this type of treatment.<br>
+				<br>
+				Our family would like to express our deepest thanks and gratitude for all of your prayers and support through
+				these trying times. We know it is in God's hands and we appreciate that He gave us this opportunity to help our mom. 
 			</div>
 		</td><td id="nav" valign="top">
 			<div>
@@ -414,14 +491,12 @@ function submitForm(formType){
 				
 			</div>
 		</td>
-<!--			<div style="clear:both;"></div>-->
-<!--		</div>-->
 </tr>
 		</table>
 	</div>
 		
-	<div style="width:974px;background-color: #f287b7;;color:#000000;">
-		<div id="footerImage"><img src="images/bubbles.png" width="974" height="77" border="0" alt=""></div>
+	<div style="width:994px;background-color: #f287b7;;color:#000000;">
+		<div id="footerImage"><img src="images/bubbles.png" width="994" height="77" border="0" alt=""></div>
 		<div id="footerContent">
 			Contact <a class="footerLink" href="mailto:daveydan21@yahoo.com?subject=Caring+For+Karen+Sue">Dave Danielson</a>
 			or <a class="footerLink" href="mailto:kandi3109@yahoo.com?subject=Caring+For+Karen+Sue">Kandi O'Connor</a>
@@ -433,6 +508,7 @@ function submitForm(formType){
 window.onload = function(){setTimeout(function(){window.scrollTo(0, 1);}, 100);}
 function(){
 	syncRegistrationValues();
+	displaySubmissionButtons();
 }
 </script>
 </body>
