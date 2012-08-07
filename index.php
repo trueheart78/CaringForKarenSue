@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><title>Caring For Karen Sue</title>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Caring For Karen Sue</title>
 <style>
 html, body {
 	background-color: #975371; /*#f287b7;*/
@@ -496,10 +498,10 @@ function submitForm(formType){
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
 <script>
 window.onload = function(){setTimeout(function(){window.scrollTo(0, 1);}, 100);}
-function(){
+jQuery(function() {
 	syncRegistrationValues();
 	displaySubmissionButtons();
-}
+});
 </script>
 </body>
 </html>
