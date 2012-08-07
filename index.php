@@ -490,8 +490,8 @@ function submitForm(formType){
 	<div style="width:994px;background-color: #f287b7;;color:#000000;">
 		<div id="footerImage"><img src="images/bubbles.png" width="994" height="77" border="0" alt=""></div>
 		<div id="footerContent">
-			Contact <a class="footerLink" href="mailto:daveydan21@yahoo.com?subject=Caring+For+Karen+Sue">Dave Danielson</a>
-			or <a class="footerLink" href="mailto:kandi3109@yahoo.com?subject=Caring+For+Karen+Sue">Kandi O'Connor</a>
+			Contact <a class="footerLink" href="mailto:daveydan21@yahoo.com?subject=Caring%20For%20Karen%20Sue">Dave Danielson</a>
+			or <a class="footerLink" href="mailto:kandi3109@yahoo.com?subject=Caring%20For%20Karen%20Sue">Kandi O'Connor</a>
 			to learn more.
 	</div>
 </div>
