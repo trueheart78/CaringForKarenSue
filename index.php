@@ -137,12 +137,12 @@ a.pink:active  { color: #f287b7; text-decoration: underline; }
 	border: 0px black solid;
 }
 .pinkBanner {
-	background-image: url('images/PinkBanner.png');
+	background-image: url('images/PinkBanner_80px.png');
 	background-repeat: no-repeat;
 	width: 696px;
-	height: 95px;
+	height: 70px;
 	color: #ffffff;
-	padding: 13px 15px 5px;
+	padding: 11px 15px 5px;
 	margin: 10px 10px 2px;
 	text-align:left;
 	border: 0px black solid;
@@ -292,11 +292,9 @@ function submitForm(formType){
 		<table width="100%" cellspacing="0" cellpadding="0" border="0">
 		<tr><td id="body" valign="top">
 			<div class="pinkBanner">
-				Please join us for the 2nd annual Caring for Karen Sue Golf Classic. A four man best
-				ball/scramble type tournament. There will be competitions for: the longest putt, and
-				the closest to pin, a par three challenge, the longest drive, and hit like the pros
-				with competitive long driver <a class="footerLink" href="http://www.rockymountainlongdrive.com" target="_blank" title="Read more at www.RockyMountainLongDrive.com">Craig "CrazyBear" Crowl II</a>!
-				Enjoy prizes, food, and a raffle/silent auction — just a dang good time!
+				Please join us for the 3rd annual Caring for Karen Sue Golf Classic. A four man best
+				ball/scramble type tournament.  There will be competitions for: the longest putt, and
+				the closest to pin, a par three challenge and the longest drive.  Enjoy prizes, food, and a raffle/silent auction!
 			</div>
 
 			<div id="formContentDonate">
@@ -319,7 +317,7 @@ function submitForm(formType){
 			<div id="formContentSponsor" >
 				<span class="title">Sponsor a Hole</span><br>
 				<br>
-				For a $200 donation, you can sponsor a hole.<br>
+				For a $250 donation, you can sponsor a hole.<br>
 				<br>
 				<input type="hidden" class="sponsorInput" name="formType" value="sponsor">
 				<div align="center">
@@ -434,41 +432,32 @@ function submitForm(formType){
 			</div>
 			<div id="content">
 				<span class="title">About Karen Sue</span><br>
-				In July of 2009 our Mother was diagnosed with Stage 3B Inflammatory Breast Cancer (IBC). 	 
-				IBC is not detectable on Mammograms, so usually by the time it is diagnosed, as with our Mother, it has 	 
-				already spread. When cancer has spread the doctors are not blessed with protocols that give you hope.<br>
-				<br> 	 
-				In August of 2010 we found out it had spread to her liver and lungs and she was given less than a year 	 
-				to live. At that time she made the decision to go to Mexico for an experimental treatment that combined 	 
-				lower doses of chemo/radiation with a cancer vaccine. We have been blessed with great friends and family
-				that have helped us over the year to raise money for that treatment.<br>
+				Three years ago in July of 2009 Karen Danielson (our Mother) was diagnosed with Stage 3B Inflammatory Breast Cancer (IBC).  IBC is not detectable on Mammograms, so usually by the time it is diagnosed, as with our Mother, it has already spread.  When cancer has spread the doctors are not blessed with protocols that give you hope.
 				<br>
-				Last year's golf tournament was a huge success thanks to a lot of people it helped our family give our
-				Mother 10 months under the treatment in Mexico, but unfortunately not being able to have immediate access
-				to doctors while at home and the increasing expenses we were unable to continue that treatment.<br>
+				<br> 
+				However, many of you helped us to provide our Mother hope with alternative treatments. For 2 years our Mother fought for her life in the most humble way that it was hard to understand at times. She never doubted her faith that God was in control and that she wanted to live. She lost her battle to cancer in September of 2011. 
 				<br>
-				Our Mother has now chosen to see a naturopathic doctor here in the US that gives her high dose vitamin C
-				two times a week. This treatment, like the experimental vaccine, is not covered under insurance. Our mom's
-				will is incredible and we want to be able to help her continue this type of treatment.<br>
 				<br>
-				Our family would like to express our deepest thanks and gratitude for all of your prayers and support through
-				these trying times. We know it is in God's hands and we appreciate that He gave us this opportunity to help our mom. 
+				We used to think we were helping her by giving her hope, but after she passed we realized that she was helping us.  She was teaching us a lesson in life and love that we will never forget.  She would not let the cancer define her and write her story for her.  She spoke of what her future would hold up until the day she closed her eyes to never open them again.  Although, she couldn’t mask the pain we would all feel from losing her, but to understand and be proud of how she fought was the best type of healing we could have received.
+				<br>
+				<br> 
+				We are working to get her treatment bills paid off and we want to continue this benefit in her honor and support something very close to her heart and that is kids in need.  Our family has been very involved in the Social Services and both our parents and grandparents were foster parents to many children.  We want to continue that legacy in our Mother’s name to help these children.
 			</div>
 		</td><td id="nav" valign="top">
 			<div>
 				<div>
 				<span class="title">WHEN:</span><br>
-				Saturday, October 8, 2011<br>
-				8:30 am Shot Gun Start
-<!--				To play is $100 (Price includes greens fees, cart, prizes and lunch) Hole Sponsors start at $200-->
+				Saturday, September 8, 2012<br>
+				7:30 am Shot Gun Start
 				</div>
 				
 				<div style='margin-top:20px;'>
 				<span class="title">WHERE:</span><br>
-				Foothills Golf Course<br> 	 
-				3901 South Carr Street<br>
-				Denver, CO 80235-1807<br>
-				<a href="http://maps.google.com/maps?q=foothills+golf+course+colorado&daddr=3901+South+Carr+Street,+Denver,+CO+80235-1807+(Foothills+Golf+Course)&hl=en&fb=1&gl=us&view=map&geocode=CTpNu4bD0IF8FT7tXAId4V-8-SGlkrjRBC2qxw&z=6&vpsrc=0">Map</a>
+				Applewood Golf Course<br> 	 
+				14001 W. 32<sup>nd</sup> Avenue<br>
+				Golden, CO 80401<br>
+				<!-- <a href="http://applewoodgc.com/" target="_blank">Visit Website</a><br> -->
+				<a href="https://maps.google.com/maps?q=applewood+golf+course,+Golden,+CO+80401&hl=en&sll=40.365277,-82.669252&sspn=6.30214,10.535889&hq=applewood+golf+course,+Golden,+CO+80401&t=m&z=16">View on Map</a>
 				</div>
 				
 				<div style='margin-top:20px;'>
