@@ -278,7 +278,7 @@ function submitForm(formType){
 <div align="center">
 	<div style="width:994px;background-color:#FFFFFF;color:#000000;">
 		<div id="header">
-			<img src="images/Banner.png" width="974" height="165" border="0" alt="">
+			<img src="images/Banner2012.png" width="974" height="165" border="0" alt="">
 		</div>
 		<div id="formContentLinks">
 			<div class="button" onclick="displayFormContent('Register');">Register to Play</div>
