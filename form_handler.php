@@ -80,7 +80,8 @@ if(strstr($_SERVER["HTTP_REFERER"],$_SERVER["HTTP_HOST"])){
 				if($hasRegistrants){
 					$submittedRegistrants = $formData[$formData["formType"]."Selection"];
 				}
-				$amountDue = 200;
+				//defulat hole sponsor cost
+				$amountDue = 250;
 				if($hasRegistrants){
 					$numRegistrants = explode(" ",$submittedRegistrants);
 					$amountDue = $numRegistrants[0] * 100;
@@ -120,7 +121,7 @@ if(strstr($_SERVER["HTTP_REFERER"],$_SERVER["HTTP_HOST"])){
 							$emailSubject = "(test) ".$emailSubject;
 						}
 						$emailMessageHTML = "<div style='font-type:Arial;font-size:10pt;color:#000000;'>
-						You have just submitted a {$submittedFor} for the CaringForKarenSue.com 2nd Annual Golf Classic on Saturday, October 8th, 2011.<br>
+						You have just submitted a {$submittedFor} for the CaringForKarenSue.com 3rd Annual Golf Classic on Saturday, October 8th, 2011.<br>
 						<br>
 						Please send a check or money order in the amount of \${$amountDue} to:<br>
 						<blockquote>1st Bank<br>
@@ -136,7 +137,7 @@ if(strstr($_SERVER["HTTP_REFERER"],$_SERVER["HTTP_HOST"])){
 						".(($hasRegistrants)?"Selected: {$submittedRegistrants}<br>":"")."
 						<br>
 						</div>";
-						$emailMessageText = "You have just submitted a {$submittedFor} for the CaringForKarenSue.com 2nd Annual Golf Classic on Saturday, October 8th, 2011.
+						$emailMessageText = "You have just submitted a {$submittedFor} for the CaringForKarenSue.com 3rd Annual Golf Classic on Saturday, October 8th, 2011.
 
 						Please send a check or money order in the amount of \${$amountDue} to:
 						1st Bank
